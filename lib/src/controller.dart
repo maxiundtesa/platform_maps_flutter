@@ -95,6 +95,18 @@ class PlatformMapController {
     }
   }
 
+  /// Returns the currentZoomLevel
+  Future<double> getZoomLevel() async {
+    if (Platform.isIOS) {
+      return this.appleController.getZoomLevel();
+    } else if (Platform.isAndroid) {
+      return this.googleController.getZoomLevel();
+    }
+    return null;
+  }
+
+
+
   /// Return [LatLngBounds] defining the region that is visible in a map.
   Future<LatLngBounds> getVisibleRegion() async {
     LatLngBounds _bounds;
