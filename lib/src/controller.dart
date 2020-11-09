@@ -50,6 +50,16 @@ class PlatformMapController {
     throw ('Platform not supported.');
   }
 
+  /// Sets the mapStyle of google maps map
+  Future<void> setMapStyle(String mapStyle) {
+    if (Platform.isAndroid) {
+      return googleController.setMapStyle(mapStyle);
+    }
+    else {
+      return null;
+    }
+  }
+
   /// Returns `true` when the [InfoWindow] is showing, `false` otherwise.
   ///
   /// The `markerId` must match one of the markers on the map.
